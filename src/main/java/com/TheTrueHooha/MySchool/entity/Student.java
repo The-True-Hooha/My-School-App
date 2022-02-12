@@ -5,12 +5,21 @@ public class Student {
     //defines the properties in the student entity
     private Long regNo;
     private String firstName;
-    private String lastNmae;
+    private String lastName;
     private String email;
     private String gender;
     private String dob;
     private String homeAddress;
 
+    //parameter constructor for the  entities
+    public Student(String firstName, String lastName, String email, String gender, String dob, String homeAddress) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.gender = gender;
+        this.dob = dob;
+        this.homeAddress = homeAddress;
+    }
 
     //getter methods for the entity
     public Long getRegNo() {
@@ -21,8 +30,8 @@ public class Student {
         return firstName;
     }
 
-    public String getLastNmae() {
-        return lastNmae;
+    public String getLastName() {
+        return lastName;
     }
 
     public String getEmail() {
@@ -50,8 +59,8 @@ public class Student {
         this.firstName = firstName;
     }
 
-    public void setLastNmae(String lastNmae) {
-        this.lastNmae = lastNmae;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public void setEmail(String email) {
@@ -69,4 +78,5 @@ public class Student {
     public void setHomeAddress(String homeAddress) {
         this.homeAddress = homeAddress;
     }
+
 }
