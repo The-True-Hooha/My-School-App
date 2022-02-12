@@ -1,18 +1,44 @@
 package com.TheTrueHooha.MySchool.entity;
 
+import javax.persistence.*;
+
+@Entity
+@Table (name = "students")
 public class Student {
 
+    //primary key for the table annotation
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     //defines the properties in the student entity
     private Long regNo;
+
+    //@column maps the column annotation for the fields in the database
+    @Column(name = "firstName", nullable = false)
     private String firstName;
+
+    @Column(name = "lastName")
     private String lastName;
+
+    @Column(name = "email")
     private String email;
+
+    @Column(name = "gender")
     private String gender;
+
+    @Column(name = "Dob")
     private String dob;
+
+    @Column(name = "homeAddress")
     private String homeAddress;
+
+    //a default constructor for the parameter constructor
+    public Student () {
+
+    }
 
     //parameter constructor for the  entities
     public Student(String firstName, String lastName, String email, String gender, String dob, String homeAddress) {
+        super();
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
