@@ -8,4 +8,7 @@ public interface StudentService {
 
     //defines a method that gets al students
     List <Student> getAllStudent ();
+
+    //defines a method to save student data
+    Student saveStudent (Student student);
 }

@@ -5,6 +5,7 @@ import com.TheTrueHooha.MySchool.service.StudentService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -26,12 +27,19 @@ public class StudentController {
     }
 
     //post method to handle creating of new students
-    @PostMapping ("/students/create-new")
+    @GetMapping ("/students/create-new")
     public String createStudent (Model model) {
 
         //creates a new student object to hold student data
         Student student = new Student();
         model.addAttribute("student", student);
         return "create-new";
+    }
+
+    //method to handle POST request to save student data
+    @PostMapping ("/students")
+    public String saveStudent (@ModelAttribute ("student") Student student) {
+        studentService.saveStudent(student);
+        return "redirect:/student";
     }
 }
