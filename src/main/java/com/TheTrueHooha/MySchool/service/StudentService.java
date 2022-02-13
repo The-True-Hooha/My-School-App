@@ -15,4 +15,7 @@ public interface StudentService {
     //method to update student data from the database
     Student getStudentById (Long id);
     Student editStudent (Student student);
+
+    //method to delete student
+    void deleteStudentbyId (Long id);
 }

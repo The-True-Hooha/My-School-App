@@ -64,6 +64,14 @@ public class StudentController {
 
         //saves the updated student profile
         studentService.editStudent(allStudents);
-        return "redirect/students";
+        return "redirect:/students";
     }
+
+    //handler method to handle delete requests
+    @GetMapping ("/students/{id}")
+    public String deleteStudent (@PathVariable Long id){
+        studentService.deleteStudentbyId(id);
+        return "redirect:/students";
+    }
+
 }
