@@ -11,4 +11,8 @@ public interface StudentService {
 
     //defines a method to save student data
     Student saveStudent (Student student);
+
+    //method to update student data from the database
+    Student getStudentById (Long id);
+    Student editStudent (Student student);
 }

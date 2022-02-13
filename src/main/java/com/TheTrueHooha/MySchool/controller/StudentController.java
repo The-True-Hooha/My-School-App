@@ -4,9 +4,7 @@ import com.TheTrueHooha.MySchool.entity.Student;
 import com.TheTrueHooha.MySchool.service.StudentService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class StudentController {
@@ -41,5 +39,31 @@ public class StudentController {
     public String saveStudent (@ModelAttribute ("student") Student student) {
         studentService.saveStudent(student);
         return "redirect:/student";
+    }
+
+    //method to handle PUT requests
+    @GetMapping ("/students/edit/{id}")
+    public String updateStudent (@PathVariable Long id, Model model){
+        model.addAttribute("student", studentService.getStudentById(id));
+        return "update-student";
+    }
+
+    //method to update student form request
+    @PostMapping ("/student/{id}")
+    public String checkStudent (@PathVariable Long id, @ModelAttribute("student") Student student, Model model){
+
+        //gets all the student from the database by Id
+        Student allStudents = studentService.getStudentById(id);
+        allStudents.setRegNo(id);
+        allStudents.setFirstName(student.getFirstName());
+        allStudents.setLastName(student.getLastName());
+        allStudents.setEmail(student.getEmail());
+        allStudents.setGender(student.getGender());
+        allStudents.setDob(student.getDob());
+        allStudents.setHomeAddress(student.getHomeAddress());
+
+        //saves the updated student profile
+        studentService.editStudent(allStudents);
+        return "redirect/students";
     }
 }

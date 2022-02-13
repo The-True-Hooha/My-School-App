@@ -29,6 +29,7 @@
             <th> GENDER </th>
             <th> DATE OF BIRTH </th>
             <th> ADDRESS </th>
+            <th> OPTIONS </th>
         </tr>
         </thead>
 
@@ -39,6 +40,11 @@
             <td th:text = "${student.email}"></td>
             <td th:text = "${student.Dob}"></td>
             <td th:text = "${student.homeAddress}"></td>
+
+            <td>
+                <a th:href="@{/students/edit/{id}{id=${student.id}"
+                class="btn btn-primary"> Update Profile </a>
+            </td>
         </tr>
         </tbody>
     </table>
